@@ -17,17 +17,13 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 export default function App() {
   function mostrarAlerta() {
-    Alert.alert(
-      "Ventana de Alerta",
-      "FAB Pulsado",
-      [
-        {text:"Cancelar", onPress: () => console.log("Cancelado")},
-        {text:"Aceptar", onPress: () => console.log("Aceptado")}
-      ]
-    )
+    Alert.alert("Ventana de Alerta", "FAB Pulsado", [
+      { text: "Cancelar", onPress: () => console.log("Cancelado") },
+      { text: "Aceptar", onPress: () => console.log("Aceptado") },
+    ]);
   }
   return (
-    <SafeAreaView style={{ flex:1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View>
         <Image
           source={require("./assets/register_now.png")}
@@ -66,27 +62,27 @@ export default function App() {
               secureTextEntry={true}
             ></TextInput>
             <TextInput
-              style={styles.cuadroTexto}
+              style={[styles.cuadroTexto, { height: 100 }]}
               placeholder="Introduce tus observaciones"
               maxLength={100}
               multiline={true}
               numberOfLines={5}
             ></TextInput>
             <View style={styles.contenedorPicker}>
-            <Picker style={styles.colorGris}>
-              <Picker.Item label="-- Nivel de estudios --" value="ne" />
-              <Picker.Item label="Secundaria" value="eso" />
-              <Picker.Item label="Bachillerato" value="bh" />
-              <Picker.Item label="Ciclo de FP" value="fp" />
-              <Picker.Item label="Universidad" value="inu" />
-              <Picker.Item label="Sin estudios" value="nada" />
-            </Picker>
+              <Picker style={styles.colorGris}>
+                <Picker.Item label="-- Nivel de estudios --" value="ne" />
+                <Picker.Item label="Secundaria" value="eso" />
+                <Picker.Item label="Bachillerato" value="bh" />
+                <Picker.Item label="Ciclo de FP" value="fp" />
+                <Picker.Item label="Universidad" value="inu" />
+                <Picker.Item label="Sin estudios" value="nada" />
+              </Picker>
             </View>
             <Text style={styles.colorGris}>
-              Pulsando el siguiente botón, el usuario se hace responsable de hacer
-              un uso correcto del portal, sin subir contenidos que supongan un
-              incumplimiento de las leyes de protección de datos ni de la
-              propiedad intelectual.
+              Pulsando el siguiente botón, el usuario se hace responsable de
+              hacer un uso correcto del portal, sin subir contenidos que
+              supongan un incumplimiento de las leyes de protección de datos ni
+              de la propiedad intelectual.
             </Text>
             <BouncyCheckbox
               size={16}
@@ -107,14 +103,20 @@ export default function App() {
               Al pulsar el botón sus datos personales serán proporcionados a
               nuestro proveedor de publicidad, que insertará anuncios de su
               interés ddurante el uso de la aplicación. Para dejar de ver
-              anuncios, deberá adquirir la versión de pago de la app en la {Platform.OS === "android" ? "Play Store" : "Apple Store" }.
+              anuncios, deberá adquirir la versión de pago de la app en la{" "}
+              {Platform.OS === "android" ? "Play Store" : "Apple Store"}.
             </Text>
           </View>
-          
         </View>
       </ScrollView>
-      <Pressable style={({ pressed }) => [ styles.fab, { backgroundColor: pressed ? "#cc7000" : "orange" } ]} onPress={mostrarAlerta}>
-        <MaterialIcons name="share" style={styles.textoFab}/>
+      <Pressable
+        style={({ pressed }) => [
+          styles.fab,
+          { backgroundColor: pressed ? "#cc7000" : "orange" },
+        ]}
+        onPress={mostrarAlerta}
+      >
+        <MaterialIcons name="share" style={styles.textoFab} />
       </Pressable>
     </SafeAreaView>
   );
@@ -175,11 +177,11 @@ const styles = StyleSheet.create({
     right: 30,
     borderRadius: "50%",
     width: 56,
-    height: 56
+    height: 56,
   },
-  textoFab:{
+  textoFab: {
     color: "white",
-    fontSize:24,
-    margin: "auto"
-  }
+    fontSize: 24,
+    margin: "auto",
+  },
 });
